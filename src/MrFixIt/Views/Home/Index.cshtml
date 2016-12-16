@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h4>Welcome to Mr Fix-It</h4>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>@User.Identity.Name</p>
+    <p>@Model.FirstName @Model.LastName</p>
+    <div class="text-center">
+        <h4>You are Logged In</h4>
+    </div>
+}
+
+

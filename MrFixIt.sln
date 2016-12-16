@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{707448DA-AB0E-452C-82FA-336A6811318E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8F967F70-E920-4D7B-814A-07442B5F0AC7}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MrFixIt", "src\MrFixIt\MrFixIt.xproj", "{0FC86F4A-31BC-4EB4-A6F5-5B85C3A5B5CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FC86F4A-31BC-4EB4-A6F5-5B85C3A5B5CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FC86F4A-31BC-4EB4-A6F5-5B85C3A5B5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FC86F4A-31BC-4EB4-A6F5-5B85C3A5B5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FC86F4A-31BC-4EB4-A6F5-5B85C3A5B5CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0FC86F4A-31BC-4EB4-A6F5-5B85C3A5B5CA} = {707448DA-AB0E-452C-82FA-336A6811318E}
+	EndGlobalSection
+EndGlobal
