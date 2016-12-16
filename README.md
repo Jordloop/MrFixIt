@@ -1,15 +1,16 @@
 ### Mr Fix-It
-#### A repair technician job tracking service.
+#### A repair technician job service.
 
-* A job may have one worker.
-* A worker may take on mulitple jobs.
-
+COMPLETED:
+* Users can register and log on
+* Users may sign up to be "workers" on the site.
 * New jobs may be added to the jobs list.
-* A worker may log in and, if they do not have an active job, select a job from the job board.
+* A job can be assigned to a worker.
+* A worker may take on mulitple jobs from the Worker Dashboard.
 
-* Workers may have mulitple completed jobs.
-* Only an admin may mark an active job completed.
+IN PROGRESS
+* Make *claiming* a job an **AJAX** action.
 
-* A worker may only have one **active** job at a time.
-* Once completed, a worker can mark a job done, which will trigger a review from an admin.
-* An admin can see all pending completed jobs.
+NEXT UP
+* A worker may designate one **active** job at a time. **AJAX**
+* Workers may mark jobs complete, and select a new active job. **AJAX**
