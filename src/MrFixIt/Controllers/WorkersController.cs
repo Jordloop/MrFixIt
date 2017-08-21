@@ -23,6 +23,7 @@ namespace MrFixIt.Controllers
                 return RedirectToAction("Create");
             }
         }
+
 //Create Worker
         public IActionResult Create()
         {
@@ -43,8 +44,8 @@ namespace MrFixIt.Controllers
         {
             var thisJob = db.Jobs.FirstOrDefault(jobs => jobs.JobId == id);
             var thisWorker = db.Workers.FirstOrDefault(worker => worker.UserName == User.Identity.Name);
-            thisJob.Pending = true;
             thisWorker.Avaliable = false;
+            thisJob.Pending = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

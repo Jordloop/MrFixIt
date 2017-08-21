@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="~/js/scripts.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -13,19 +14,20 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            //Mark job as active
+//Mark job as active
             $('.Mark-Job-Active').submit(function (event) {
                 event.preventDefault();
+                console.log("Ding!")
                 $.ajax({
                     url: '@Url.Action("MarkJobActive", "Workers")',
                     type: 'POST',
                     dataType: 'html',
                     data: $(this).serialize(),
-                    success: function (result) { console.log( "Mark Job Active" ) }
+                    success: function (result) { }
                 });
             });
 
-            //Mark job as complete
+//Mark job as complete
             $('.Mark-Job-Complete').submit(function (event) {
                 event.preventDefault();
                 $.ajax({
@@ -36,6 +38,7 @@
                     success: function (result) { console.log("Mark Job Complete") }
                 });
             });
+
 
         });//document.ready
     </script>

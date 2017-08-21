@@ -1,9 +1,7 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Worker Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 @if (User.Identity.IsAuthenticated)
 {
@@ -14,8 +12,21 @@
         @foreach (var Job in Model.Jobs)
         {
             <h3>@Job.Title</h3>
-            <h5>Active: @Job.Pending</h5>
-            <h5>Completed: @Job.Completed</h5>
+            <form action="MarkJobActive" class="Mark-Job-Active">
+                <input type="hidden"  name="id" value="@Job.JobId"/>
+                <button type="submit" id="@Job.JobId">Set As Active</button>
+            </form>
+
+            @if(Job.Pending)
+            {
+                <p>Job.Pending = true</p>
+
+            }
+            else
+            {
+                <p>Job.Pending = false</p>
+
+            }
 
         }
         @if (Model.Avaliable)
