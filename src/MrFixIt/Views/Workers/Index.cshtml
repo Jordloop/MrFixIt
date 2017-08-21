@@ -11,24 +11,36 @@
         <h3>Your Current Jobs:</h3>
         @foreach (var Job in Model.Jobs)
         {
-            <h3>@Job.Title</h3>
-            <form action="MarkJobActive" class="Mark-Job-Active">
-                <input type="hidden"  name="id" value="@Job.JobId"/>
-                <button type="submit" id="@Job.JobId">Set As Active</button>
-            </form>
+            //Only displays incomplete jobs
+            @if(!Job.Completed )
+            {                                
+                <h3>@Job.Title</h3>      
 
-            @if(Job.Pending)
-            {
-                <p>Job.Pending = true</p>
+                //Only displays if job is not active
+                @if (!Job.Pending)
+                {
+                    <form action="MarkJobActive" class="Mark-Job-Active">
+                        <input type="hidden" name="id" value="@Job.JobId" />
+                        <button type="submit" id="@Job.JobId">Set As Active</button>
+                    </form>
 
+                    <p id="JobActive">Job in queue</p>
+
+                }
+                //Only displays if job is active
+                else
+                {
+                    <form action="MarkJobComplete" class="Mark-Job-Complete">
+                        <input type="hidden" name="id" value="@Job.JobId" />
+                        <button type="submit" id="@Job.JobId">Mark As Complete</button>
+                    </form>
+
+                    <p id="JobProgress">Job in progress</p>
+
+                }
             }
-            else
-            {
-                <p>Job.Pending = false</p>
-
-            }
-
         }
+
         @if (Model.Avaliable)
         {
             <h2>Please @Html.ActionLink("select a job", "Index", "Jobs").</h2>

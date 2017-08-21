@@ -17,13 +17,14 @@
 //Mark job as active
             $('.Mark-Job-Active').submit(function (event) {
                 event.preventDefault();
-                console.log("Ding!")
                 $.ajax({
                     url: '@Url.Action("MarkJobActive", "Workers")',
                     type: 'POST',
                     dataType: 'html',
                     data: $(this).serialize(),
-                    success: function (result) { }
+                    success: function (result) {
+                        location.reload();
+                     }
                 });
             });
 
@@ -35,7 +36,9 @@
                     type: 'POST',
                     dataType: 'html',
                     data: $(this).serialize(),
-                    success: function (result) { console.log("Mark Job Complete") }
+                    success: function (result) {
+                        location.reload();
+                    }
                 });
             });
 
