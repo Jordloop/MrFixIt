@@ -13,18 +13,16 @@ namespace MrFixIt.Controllers
     public class JobsController : Controller
     {
         private MrFixItContext db = new MrFixItContext();
-
-        // GET: /<controller>/
+//Index
         public IActionResult Index()
         {
             return View(db.Jobs.Include(i => i.Worker).ToList());
         }
-
+//Create job
         public IActionResult Create()
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult Create(Job job)
         {
@@ -32,13 +30,12 @@ namespace MrFixIt.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+//Claim job
         public IActionResult Claim(int id)
         {
             var thisItem = db.Jobs.FirstOrDefault(items => items.JobId == id);
             return View(thisItem);
         }
-
         [HttpPost]
         public IActionResult Claim(Job job)
         {
@@ -47,5 +44,6 @@ namespace MrFixIt.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
     }
 }

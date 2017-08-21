@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using MrFixIt.Models;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +10,7 @@ namespace MrFixIt.Controllers
     public class WorkersController : Controller
     {
         private MrFixItContext db = new MrFixItContext();
-        // GET: /<controller>/
+//Index
         public IActionResult Index()
         {
             var thisWorker = db.Workers.Include(i =>i.Jobs).FirstOrDefault(i => i.UserName == User.Identity.Name);
@@ -26,18 +23,28 @@ namespace MrFixIt.Controllers
                 return RedirectToAction("Create");
             }
         }
-
+//Create Worker
         public IActionResult Create()
         {
             return View();
         }
-
-
         [HttpPost]
         public IActionResult Create(Worker worker)
         {
             worker.UserName = User.Identity.Name;
             db.Workers.Add(worker); 
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+//Mark Job Active
+        [HttpPost]
+        public IActionResult MarkJobActive(int id)
+        {
+            var thisJob = db.Jobs.FirstOrDefault(jobs => jobs.JobId == id);
+            var thisWorker = db.Workers.FirstOrDefault(worker => worker.UserName == User.Identity.Name);
+            thisJob.Pending = true;
+            thisWorker.Avaliable = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
