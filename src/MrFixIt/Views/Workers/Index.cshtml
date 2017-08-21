@@ -13,7 +13,9 @@
         <h3>Your Current Jobs:</h3>
         @foreach (var Job in Model.Jobs)
         {
-            <h5>@Job.Title</h5>
+            <h3>@Job.Title</h3>
+            <h5>Active: @Job.Pending</h5>
+            <h5>Completed: @Job.Completed</h5>
 
         }
         @if (Model.Avaliable)

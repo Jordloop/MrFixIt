@@ -10,6 +10,34 @@
      <title>@ViewBag.Title</title>
 </head>
 <body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Mark job as active
+            $('.Mark-Job-Active').submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '@Url.Action("MarkJobActive", "Workers")',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: $(this).serialize(),
+                    success: function (result) { console.log( "Mark Job Active" ) }
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
