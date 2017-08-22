@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using MrFixIt.Models;
 using Microsoft.EntityFrameworkCore;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MrFixIt.Controllers
 {
@@ -30,16 +29,17 @@ namespace MrFixIt.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-//Claim job
         public IActionResult Claim(int id)
         {
             var thisItem = db.Jobs.FirstOrDefault(items => items.JobId == id);
             return View(thisItem);
         }
+//Claim job
         [HttpPost]
-        public IActionResult Claim(Job job)
+        public IActionResult ClaimJob(int id)
         {
-            job.Worker = db.Workers.FirstOrDefault(i => i.UserName == User.Identity.Name);
+            var job = db.Jobs.FirstOrDefault(jobs => jobs.JobId == id);
+            job.Worker = db.Workers.FirstOrDefault(worker => worker.UserName == User.Identity.Name);
             db.Entry(job).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
